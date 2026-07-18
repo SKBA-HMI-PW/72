@@ -1,0 +1,159 @@
+:root {
+  color-scheme: light dark;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #0b1220;
+  color: #f8fafc;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(59,130,246,.24), transparent 36rem),
+    #0b1220;
+}
+
+button, input { font: inherit; }
+
+.app {
+  width: min(100%, 560px);
+  margin: 0 auto;
+  padding: max(28px, env(safe-area-inset-top)) 18px max(30px, env(safe-area-inset-bottom));
+}
+
+header { margin-bottom: 22px; }
+
+.eyebrow {
+  margin: 0 0 4px;
+  color: #60a5fa;
+  font-weight: 800;
+  letter-spacing: .18em;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 8vw, 3.2rem);
+  line-height: 1.02;
+}
+
+.subtitle {
+  margin: 8px 0 0;
+  color: #94a3b8;
+}
+
+.panel, .result-card, .formula {
+  background: rgba(15, 23, 42, .82);
+  border: 1px solid rgba(148, 163, 184, .2);
+  border-radius: 20px;
+  box-shadow: 0 16px 40px rgba(0,0,0,.25);
+}
+
+.panel { padding: 18px; }
+
+.field-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+label span {
+  display: block;
+  margin-bottom: 7px;
+  color: #cbd5e1;
+  font-size: .9rem;
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: #111827;
+  color: #f8fafc;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+button {
+  border: 0;
+  border-radius: 12px;
+  min-height: 46px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.secondary {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+
+.result-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 14px;
+  padding: 18px;
+}
+
+.result-label {
+  margin: 0 0 4px;
+  color: #94a3b8;
+  font-size: .9rem;
+  font-weight: 700;
+}
+
+.password {
+  margin: 0;
+  font-size: clamp(2rem, 11vw, 3.6rem);
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: .04em;
+  word-break: break-all;
+}
+
+.copy-btn {
+  flex: 0 0 auto;
+  padding: 0 18px;
+  background: #2563eb;
+  color: white;
+}
+
+.copy-btn:active, .secondary:active { transform: scale(.98); }
+
+.formula {
+  margin-top: 14px;
+  padding: 16px 18px;
+  color: #cbd5e1;
+}
+
+.formula p { margin: 4px 0; }
+
+.status {
+  min-height: 24px;
+  margin: 12px 4px 0;
+  color: #86efac;
+  font-weight: 700;
+  text-align: center;
+}
+
+footer {
+  margin-top: 18px;
+  color: #94a3b8;
+  font-size: .86rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (max-width: 430px) {
+  .field-grid { grid-template-columns: 1fr; }
+}
