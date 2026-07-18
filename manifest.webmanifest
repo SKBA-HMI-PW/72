@@ -1,11 +1,10 @@
 {
-  "name": "GOT2000 Password Calculator",
-  "short_name": "GOT Password",
+  "name": "SKBA HMI Password",
+  "short_name": "HMI Password",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#0b1220",
   "theme_color": "#111827",
-  "description": "GOT2000 password calculator",
   "icons": [
     {
       "src": "./icon-192.png",

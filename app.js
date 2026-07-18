@@ -1,73 +1,37 @@
-const dateInput = document.getElementById("dateInput");
-const timeInput = document.getElementById("timeInput");
-const password4 = document.getElementById("password4");
-const password7 = document.getElementById("password7");
-const statusEl = document.getElementById("status");
+const p4=document.getElementById("password4");
+const p7=document.getElementById("password7");
+const timeEl=document.getElementById("currentTime");
+const statusEl=document.getElementById("status");
+const pad=n=>String(n).padStart(2,"0");
+const last4=n=>String(((n%10000)+10000)%10000).padStart(4,"0");
 
-function pad2(value) {
-  return String(value).padStart(2, "0");
+function updateNow(){
+  const now=new Date();
+  const base=now.getFullYear()-now.getDate()+now.getHours();
+  p4.textContent=last4(base*4);
+  p7.textContent=last4(base*7);
+  timeEl.textContent=`${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
 }
 
-function setNow() {
-  const now = new Date();
-  dateInput.value = `${now.getFullYear()}-${pad2(now.getMonth() + 1)}-${pad2(now.getDate())}`;
-  timeInput.value = `${pad2(now.getHours())}:${pad2(now.getMinutes())}`;
-  calculate();
-}
-
-function calculate() {
-  if (!dateInput.value || !timeInput.value) {
-    password4.textContent = "—";
-    password7.textContent = "—";
-    return;
+async function copyValue(id,btn){
+  const value=document.getElementById(id).textContent;
+  try{await navigator.clipboard.writeText(value)}
+  catch{
+    const t=document.createElement("textarea");
+    t.value=value;t.style.position="fixed";t.style.opacity="0";
+    document.body.appendChild(t);t.select();document.execCommand("copy");t.remove();
   }
-
-  const [year, , day] = dateInput.value.split("-").map(Number);
-  const [hour] = timeInput.value.split(":").map(Number);
-
-  const base = year - day + hour;
-  password4.textContent = String(base * 4);
-  password7.textContent = String(base * 7);
-  statusEl.textContent = "";
+  const old=btn.textContent;btn.textContent="완료";statusEl.textContent=`${value} 복사됨`;
+  setTimeout(()=>{btn.textContent=old;statusEl.textContent=""},1300);
 }
 
-async function copyPassword(targetId, button) {
-  const value = document.getElementById(targetId).textContent;
-  if (!value || value === "—") return;
-
-  try {
-    await navigator.clipboard.writeText(value);
-  } catch {
-    const area = document.createElement("textarea");
-    area.value = value;
-    document.body.appendChild(area);
-    area.select();
-    document.execCommand("copy");
-    area.remove();
-  }
-
-  const original = button.textContent;
-  button.textContent = "완료";
-  statusEl.textContent = `${value} 복사됨`;
-  setTimeout(() => {
-    button.textContent = original;
-    statusEl.textContent = "";
-  }, 1500);
-}
-
-document.getElementById("nowBtn").addEventListener("click", setNow);
-document.getElementById("refreshBtn").addEventListener("click", calculate);
-dateInput.addEventListener("change", calculate);
-timeInput.addEventListener("change", calculate);
-
-document.querySelectorAll(".copy-btn").forEach((button) => {
-  button.addEventListener("click", () => copyPassword(button.dataset.copyTarget, button));
+document.querySelectorAll(".copy-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>copyValue(btn.dataset.copyTarget,btn));
 });
 
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./service-worker.js").catch(() => {});
-  });
-}
+updateNow();
+setInterval(updateNow,1000);
 
-setNow();
+if("serviceWorker" in navigator){
+  window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js").catch(()=>{}));
+}
