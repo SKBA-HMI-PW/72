@@ -9,7 +9,7 @@ function updateNow(){
   const now=new Date();
   const base=now.getFullYear()-now.getDate()+now.getHours();
   p4.textContent=last4(base*4);
-  p7.textContent=last4(base*7);
+  p7.textContent=last4(base*8);
   timeEl.textContent=`${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
 }
 
