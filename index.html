@@ -1,39 +1,129 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#111827">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="HMI Password">
-<title>HMI Password</title>
-<link rel="manifest" href="./manifest.webmanifest">
-<link rel="icon" href="./icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="./icon-192.png">
-<link rel="stylesheet" href="./style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111827">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>HMI Password</title>
+
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+  <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
+
 <main class="app">
-<header>
-<p class="eyebrow">SKBA HMI</p>
-<h1>Password</h1>
-<p id="currentTime" class="current-time">현재 시각 확인 중…</p>
-</header>
 
-<section class="result-card">
-<div><p class="result-label">2층</p><p id="password4" class="password">----</p></div>
-<button class="copy-btn" data-copy-target="password4">복사</button>
-</section>
+  <header>
+    <p class="eyebrow">SKBA HMI</p>
+    <h1>Password</h1>
+    <p id="currentTime" class="current-time"></p>
+  </header>
 
-<section class="result-card">
-<div><p class="result-label">1층</p><p id="password7" class="password">----</p></div>
-<button class="copy-btn" data-copy-target="password7">복사</button>
-</section>
 
-<p id="status" class="status" aria-live="polite"></p>
-<footer>현재 시각 기준 · 자동 갱신</footer>
+  <!-- 배율 입력 -->
+  <div style="margin: 0 0 20px 0;">
+    <label style="
+      color:#bfdbfe;
+      font-weight:900;
+      font-size:18px;
+    ">
+      계산식 배율
+    </label>
+
+    <input
+      id="multiplier"
+      type="number"
+      inputmode="numeric"
+      value="8"
+      style="
+        width:80px;
+        margin-left:10px;
+        padding:10px;
+        font-size:20px;
+        font-weight:900;
+        text-align:center;
+        color:white;
+        background:#111827;
+        border:1px solid #475569;
+        border-radius:10px;
+      "
+    >
+  </div>
+
+
+  <!-- ×4 -->
+  <section class="result-card">
+
+    <div>
+
+      <p
+        id="formula4"
+        class="result-label">
+        (YYYY − DD + HH) × 4
+      </p>
+
+      <p
+        id="password4"
+        class="password">
+        ----
+      </p>
+
+    </div>
+
+    <button
+      class="copy-btn"
+      data-copy-target="password4">
+      복사
+    </button>
+
+  </section>
+
+
+  <!-- 변경 가능한 배율 -->
+  <section class="result-card">
+
+    <div>
+
+      <p
+        id="formulaX"
+        class="result-label">
+        (YYYY − DD + HH) × 8
+      </p>
+
+      <p
+        id="password7"
+        class="password">
+        ----
+      </p>
+
+    </div>
+
+    <button
+      class="copy-btn"
+      data-copy-target="password7">
+      복사
+    </button>
+
+  </section>
+
+
+  <p
+    id="status"
+    class="status"
+    aria-live="polite">
+  </p>
+
+
+  <footer>
+    현재 시각 기준 · 자동 갱신
+  </footer>
+
 </main>
-<script src="./app.js"></script>
+
+<script src="./app.js?v=4"></script>
+
 </body>
 </html>
