@@ -1,13 +1,17 @@
-const p4 = document.getElementById("password4");
-const p7 = document.getElementById("password7");
+const password =
+  document.getElementById("password");
 
-const formula4 = document.getElementById("formula4");
-const formulaX = document.getElementById("formulaX");
+const formula =
+  document.getElementById("formula");
 
-const multiplier = document.getElementById("multiplier");
+const multiplier =
+  document.getElementById("multiplier");
 
-const timeEl = document.getElementById("currentTime");
-const statusEl = document.getElementById("status");
+const timeEl =
+  document.getElementById("currentTime");
+
+const statusEl =
+  document.getElementById("status");
 
 
 const pad = n =>
@@ -25,18 +29,20 @@ function updateNow() {
 
   const now = new Date();
 
-  const year = now.getFullYear();
-  const day = now.getDate();
-  const hour = now.getHours();
+  const year =
+    now.getFullYear();
+
+  const day =
+    now.getDate();
+
+  const hour =
+    now.getHours();
 
 
   const base =
-    year
-    - day
-    + hour;
+    year - day + hour;
 
 
-  // 입력한 배율
   let m =
     parseInt(
       multiplier.value,
@@ -49,30 +55,19 @@ function updateNow() {
   }
 
 
-  // 첫 번째 비밀번호 ×4
-  p4.textContent =
-    last4(
-      base * 4
-    );
-
-
-  // 두 번째 비밀번호 ×입력값
-  p7.textContent =
+  // 비밀번호 계산
+  password.textContent =
     last4(
       base * m
     );
 
 
   // 계산식 표시
-  formula4.textContent =
-    "(YYYY − DD + HH) × 4";
-
-
-  formulaX.textContent =
+  formula.textContent =
     `(YYYY − DD + HH) × ${m}`;
 
 
-  // 현재 시간 표시
+  // 현재 시간
   timeEl.textContent =
     `${year}-${pad(now.getMonth() + 1)}-${pad(day)} `
     + `${pad(hour)}:${pad(now.getMinutes())}`;
@@ -81,7 +76,7 @@ function updateNow() {
 
 
 
-// 배율 입력 즉시 계산
+// 배율 변경 즉시 계산
 multiplier.addEventListener(
   "input",
   updateNow
@@ -89,16 +84,11 @@ multiplier.addEventListener(
 
 
 
-// 복사 기능
-async function copyValue(
-  id,
-  button
-) {
+// 복사
+async function copyValue() {
 
   const value =
-    document
-      .getElementById(id)
-      .textContent;
+    password.textContent;
 
 
   try {
@@ -112,31 +102,19 @@ async function copyValue(
   catch {
 
     const t =
-      document
-        .createElement("textarea");
+      document.createElement("textarea");
 
     t.value = value;
 
-    document
-      .body
-      .appendChild(t);
+    document.body.appendChild(t);
 
     t.select();
 
-    document
-      .execCommand("copy");
+    document.execCommand("copy");
 
     t.remove();
 
   }
-
-
-  const old =
-    button.textContent;
-
-
-  button.textContent =
-    "완료";
 
 
   statusEl.textContent =
@@ -145,11 +123,7 @@ async function copyValue(
 
   setTimeout(() => {
 
-    button.textContent =
-      old;
-
-    statusEl.textContent =
-      "";
+    statusEl.textContent = "";
 
   }, 1300);
 
@@ -158,23 +132,15 @@ async function copyValue(
 
 
 document
-  .querySelectorAll(".copy-btn")
-  .forEach(button => {
-
-    button.addEventListener(
-      "click",
-      () =>
-        copyValue(
-          button.dataset.copyTarget,
-          button
-        )
-    );
-
-  });
+  .querySelector(".copy-btn")
+  .addEventListener(
+    "click",
+    copyValue
+  );
 
 
 
-// 시작하자마자 계산
+// 처음 열었을 때 계산
 updateNow();
 
 
