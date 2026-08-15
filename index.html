@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#111827">
   <meta name="apple-mobile-web-app-capable" content="yes">
+
   <title>HMI Password</title>
 
   <link rel="manifest" href="./manifest.webmanifest">
@@ -24,12 +25,21 @@
 
 
   <!-- 배율 입력 -->
-  <div style="margin: 0 0 20px 0;">
-    <label style="
-      color:#bfdbfe;
-      font-weight:900;
-      font-size:18px;
-    ">
+  <div style="
+    margin: 0 0 20px 0;
+    padding: 20px;
+    background: rgba(15,23,42,.88);
+    border: 1px solid rgba(148,163,184,.22);
+    border-radius: 18px;
+  ">
+
+    <label
+      for="multiplier"
+      style="
+        color:#bfdbfe;
+        font-weight:900;
+        font-size:18px;
+      ">
       계산식 배율
     </label>
 
@@ -39,10 +49,10 @@
       inputmode="numeric"
       value="8"
       style="
-        width:80px;
-        margin-left:10px;
+        width:90px;
+        margin-left:12px;
         padding:10px;
-        font-size:20px;
+        font-size:22px;
         font-weight:900;
         text-align:center;
         color:white;
@@ -51,50 +61,23 @@
         border-radius:10px;
       "
     >
+
   </div>
 
 
-  <!-- ×4 -->
+  <!-- 비밀번호 -->
   <section class="result-card">
 
     <div>
 
       <p
-        id="formula4"
-        class="result-label">
-        (YYYY − DD + HH) × 4
-      </p>
-
-      <p
-        id="password4"
-        class="password">
-        ----
-      </p>
-
-    </div>
-
-    <button
-      class="copy-btn"
-      data-copy-target="password4">
-      복사
-    </button>
-
-  </section>
-
-
-  <!-- 변경 가능한 배율 -->
-  <section class="result-card">
-
-    <div>
-
-      <p
-        id="formulaX"
+        id="formula"
         class="result-label">
         (YYYY − DD + HH) × 8
       </p>
 
       <p
-        id="password7"
+        id="password"
         class="password">
         ----
       </p>
@@ -103,7 +86,7 @@
 
     <button
       class="copy-btn"
-      data-copy-target="password7">
+      data-copy-target="password">
       복사
     </button>
 
@@ -123,7 +106,8 @@
 
 </main>
 
-<script src="./app.js?v=4"></script>
+
+<script src="./app.js?v=5"></script>
 
 </body>
 </html>
