@@ -24,27 +24,25 @@
   </header>
 
 
-  <!-- 배율 입력 -->
+  <!-- 계산식 1 -->
   <div style="
-    margin: 0 0 20px 0;
-    padding: 20px;
-    background: rgba(15,23,42,.88);
-    border: 1px solid rgba(148,163,184,.22);
-    border-radius: 18px;
+    margin:0 0 16px 0;
+    padding:20px;
+    background:rgba(15,23,42,.88);
+    border:1px solid rgba(148,163,184,.22);
+    border-radius:18px;
   ">
 
-    <label
-      for="multiplier"
-      style="
-        color:#bfdbfe;
-        font-weight:900;
-        font-size:18px;
-      ">
-      계산식 배율
+    <label style="
+      color:#bfdbfe;
+      font-weight:900;
+      font-size:18px;
+    ">
+      계산식 배율 1
     </label>
 
     <input
-      id="multiplier"
+      id="multiplier1"
       type="number"
       inputmode="numeric"
       value="8"
@@ -64,20 +62,18 @@
 
   </div>
 
-
-  <!-- 비밀번호 -->
   <section class="result-card">
 
     <div>
 
       <p
-        id="formula"
+        id="formula1"
         class="result-label">
         (YYYY − DD + HH) × 8
       </p>
 
       <p
-        id="password"
+        id="password1"
         class="password">
         ----
       </p>
@@ -86,7 +82,139 @@
 
     <button
       class="copy-btn"
-      data-copy-target="password">
+      data-copy-target="password1">
+      복사
+    </button>
+
+  </section>
+
+
+
+  <!-- 계산식 2 -->
+  <div style="
+    margin:24px 0 16px 0;
+    padding:20px;
+    background:rgba(15,23,42,.88);
+    border:1px solid rgba(148,163,184,.22);
+    border-radius:18px;
+  ">
+
+    <label style="
+      color:#bfdbfe;
+      font-weight:900;
+      font-size:18px;
+    ">
+      계산식 배율 2
+    </label>
+
+    <input
+      id="multiplier2"
+      type="number"
+      inputmode="numeric"
+      value="7"
+      style="
+        width:90px;
+        margin-left:12px;
+        padding:10px;
+        font-size:22px;
+        font-weight:900;
+        text-align:center;
+        color:white;
+        background:#111827;
+        border:1px solid #475569;
+        border-radius:10px;
+      "
+    >
+
+  </div>
+
+  <section class="result-card">
+
+    <div>
+
+      <p
+        id="formula2"
+        class="result-label">
+        (YYYY − DD + HH) × 7
+      </p>
+
+      <p
+        id="password2"
+        class="password">
+        ----
+      </p>
+
+    </div>
+
+    <button
+      class="copy-btn"
+      data-copy-target="password2">
+      복사
+    </button>
+
+  </section>
+
+
+
+  <!-- 계산식 3 -->
+  <div style="
+    margin:24px 0 16px 0;
+    padding:20px;
+    background:rgba(15,23,42,.88);
+    border:1px solid rgba(148,163,184,.22);
+    border-radius:18px;
+  ">
+
+    <label style="
+      color:#bfdbfe;
+      font-weight:900;
+      font-size:18px;
+    ">
+      계산식 배율 3
+    </label>
+
+    <input
+      id="multiplier3"
+      type="number"
+      inputmode="numeric"
+      value="4"
+      style="
+        width:90px;
+        margin-left:12px;
+        padding:10px;
+        font-size:22px;
+        font-weight:900;
+        text-align:center;
+        color:white;
+        background:#111827;
+        border:1px solid #475569;
+        border-radius:10px;
+      "
+    >
+
+  </div>
+
+  <section class="result-card">
+
+    <div>
+
+      <p
+        id="formula3"
+        class="result-label">
+        (YYYY − DD + HH) × 4
+      </p>
+
+      <p
+        id="password3"
+        class="password">
+        ----
+      </p>
+
+    </div>
+
+    <button
+      class="copy-btn"
+      data-copy-target="password3">
       복사
     </button>
 
@@ -107,7 +235,7 @@
 </main>
 
 
-<script src="./app.js?v=5"></script>
+<script src="./app.js?v=10"></script>
 
 </body>
 </html>
