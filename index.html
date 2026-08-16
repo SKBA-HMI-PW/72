@@ -10,7 +10,7 @@
 
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="apple-touch-icon" href="./icon-192.png">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css?v=11">
 </head>
 
 <body>
@@ -25,52 +25,31 @@
 
 
   <!-- 계산식 1 -->
-  <div style="
-    margin:0 0 16px 0;
-    padding:20px;
-    background:rgba(15,23,42,.88);
-    border:1px solid rgba(148,163,184,.22);
-    border-radius:18px;
-  ">
+  <section class="calc-card">
 
-    <label style="
-      color:#bfdbfe;
-      font-weight:900;
-      font-size:18px;
-    ">
-      계산식 배율 1
-    </label>
+    <div class="top-row">
 
-    <input
-      id="multiplier1"
-      type="number"
-      inputmode="numeric"
-      value="8"
-      style="
-        width:90px;
-        margin-left:12px;
-        padding:10px;
-        font-size:22px;
-        font-weight:900;
-        text-align:center;
-        color:white;
-        background:#111827;
-        border:1px solid #475569;
-        border-radius:10px;
-      "
-    >
+      <div class="multiplier-box">
+        <span>배율</span>
 
-  </div>
-
-  <section class="result-card">
-
-    <div>
+        <input
+          id="multiplier1"
+          type="number"
+          inputmode="numeric"
+          value="8"
+        >
+      </div>
 
       <p
         id="formula1"
-        class="result-label">
+        class="formula">
         (YYYY − DD + HH) × 8
       </p>
+
+    </div>
+
+
+    <div class="bottom-row">
 
       <p
         id="password1"
@@ -78,65 +57,44 @@
         ----
       </p>
 
-    </div>
+      <button
+        class="copy-btn"
+        data-copy-target="password1">
+        복사
+      </button>
 
-    <button
-      class="copy-btn"
-      data-copy-target="password1">
-      복사
-    </button>
+    </div>
 
   </section>
 
 
 
   <!-- 계산식 2 -->
-  <div style="
-    margin:24px 0 16px 0;
-    padding:20px;
-    background:rgba(15,23,42,.88);
-    border:1px solid rgba(148,163,184,.22);
-    border-radius:18px;
-  ">
+  <section class="calc-card">
 
-    <label style="
-      color:#bfdbfe;
-      font-weight:900;
-      font-size:18px;
-    ">
-      계산식 배율 2
-    </label>
+    <div class="top-row">
 
-    <input
-      id="multiplier2"
-      type="number"
-      inputmode="numeric"
-      value="7"
-      style="
-        width:90px;
-        margin-left:12px;
-        padding:10px;
-        font-size:22px;
-        font-weight:900;
-        text-align:center;
-        color:white;
-        background:#111827;
-        border:1px solid #475569;
-        border-radius:10px;
-      "
-    >
+      <div class="multiplier-box">
+        <span>배율</span>
 
-  </div>
-
-  <section class="result-card">
-
-    <div>
+        <input
+          id="multiplier2"
+          type="number"
+          inputmode="numeric"
+          value="5"
+        >
+      </div>
 
       <p
         id="formula2"
-        class="result-label">
-        (YYYY − DD + HH) × 7
+        class="formula">
+        (YYYY − DD + HH) × 5
       </p>
+
+    </div>
+
+
+    <div class="bottom-row">
 
       <p
         id="password2"
@@ -144,65 +102,44 @@
         ----
       </p>
 
-    </div>
+      <button
+        class="copy-btn"
+        data-copy-target="password2">
+        복사
+      </button>
 
-    <button
-      class="copy-btn"
-      data-copy-target="password2">
-      복사
-    </button>
+    </div>
 
   </section>
 
 
 
   <!-- 계산식 3 -->
-  <div style="
-    margin:24px 0 16px 0;
-    padding:20px;
-    background:rgba(15,23,42,.88);
-    border:1px solid rgba(148,163,184,.22);
-    border-radius:18px;
-  ">
+  <section class="calc-card">
 
-    <label style="
-      color:#bfdbfe;
-      font-weight:900;
-      font-size:18px;
-    ">
-      계산식 배율 3
-    </label>
+    <div class="top-row">
 
-    <input
-      id="multiplier3"
-      type="number"
-      inputmode="numeric"
-      value="4"
-      style="
-        width:90px;
-        margin-left:12px;
-        padding:10px;
-        font-size:22px;
-        font-weight:900;
-        text-align:center;
-        color:white;
-        background:#111827;
-        border:1px solid #475569;
-        border-radius:10px;
-      "
-    >
+      <div class="multiplier-box">
+        <span>배율</span>
 
-  </div>
-
-  <section class="result-card">
-
-    <div>
+        <input
+          id="multiplier3"
+          type="number"
+          inputmode="numeric"
+          value="3"
+        >
+      </div>
 
       <p
         id="formula3"
-        class="result-label">
-        (YYYY − DD + HH) × 4
+        class="formula">
+        (YYYY − DD + HH) × 3
       </p>
+
+    </div>
+
+
+    <div class="bottom-row">
 
       <p
         id="password3"
@@ -210,13 +147,13 @@
         ----
       </p>
 
-    </div>
+      <button
+        class="copy-btn"
+        data-copy-target="password3">
+        복사
+      </button>
 
-    <button
-      class="copy-btn"
-      data-copy-target="password3">
-      복사
-    </button>
+    </div>
 
   </section>
 
@@ -229,13 +166,3 @@
 
 
   <footer>
-    현재 시각 기준 · 자동 갱신
-  </footer>
-
-</main>
-
-
-<script src="./app.js?v=10"></script>
-
-</body>
-</html>
