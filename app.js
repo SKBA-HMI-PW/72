@@ -1,17 +1,39 @@
-const password =
-  document.getElementById("password");
-
-const formula =
-  document.getElementById("formula");
-
-const multiplier =
-  document.getElementById("multiplier");
-
 const timeEl =
   document.getElementById("currentTime");
 
 const statusEl =
   document.getElementById("status");
+
+
+const multiplier1 =
+  document.getElementById("multiplier1");
+
+const multiplier2 =
+  document.getElementById("multiplier2");
+
+const multiplier3 =
+  document.getElementById("multiplier3");
+
+
+const formula1 =
+  document.getElementById("formula1");
+
+const formula2 =
+  document.getElementById("formula2");
+
+const formula3 =
+  document.getElementById("formula3");
+
+
+const password1 =
+  document.getElementById("password1");
+
+const password2 =
+  document.getElementById("password2");
+
+const password3 =
+  document.getElementById("password3");
+
 
 
 const pad = n =>
@@ -25,9 +47,29 @@ const last4 = n =>
 
 
 
+function getMultiplier(input) {
+
+  const value =
+    parseInt(
+      input.value,
+      10
+    );
+
+  if (isNaN(value)) {
+    return 0;
+  }
+
+  return value;
+
+}
+
+
+
 function updateNow() {
 
-  const now = new Date();
+  const now =
+    new Date();
+
 
   const year =
     now.getFullYear();
@@ -43,31 +85,42 @@ function updateNow() {
     year - day + hour;
 
 
-  let m =
-    parseInt(
-      multiplier.value,
-      10
-    );
+  const m1 =
+    getMultiplier(multiplier1);
+
+  const m2 =
+    getMultiplier(multiplier2);
+
+  const m3 =
+    getMultiplier(multiplier3);
 
 
-  if (isNaN(m)) {
-    m = 0;
-  }
-
-
-  // 비밀번호 계산
-  password.textContent =
+  password1.textContent =
     last4(
-      base * m
+      base * m1
+    );
+
+  password2.textContent =
+    last4(
+      base * m2
+    );
+
+  password3.textContent =
+    last4(
+      base * m3
     );
 
 
-  // 계산식 표시
-  formula.textContent =
-    `(YYYY − DD + HH) × ${m}`;
+  formula1.textContent =
+    `(YYYY − DD + HH) × ${m1}`;
+
+  formula2.textContent =
+    `(YYYY − DD + HH) × ${m2}`;
+
+  formula3.textContent =
+    `(YYYY − DD + HH) × ${m3}`;
 
 
-  // 현재 시간
   timeEl.textContent =
     `${year}-${pad(now.getMonth() + 1)}-${pad(day)} `
     + `${pad(hour)}:${pad(now.getMinutes())}`;
@@ -77,7 +130,17 @@ function updateNow() {
 
 
 // 배율 변경 즉시 계산
-multiplier.addEventListener(
+multiplier1.addEventListener(
+  "input",
+  updateNow
+);
+
+multiplier2.addEventListener(
+  "input",
+  updateNow
+);
+
+multiplier3.addEventListener(
   "input",
   updateNow
 );
@@ -85,10 +148,15 @@ multiplier.addEventListener(
 
 
 // 복사
-async function copyValue() {
+async function copyValue(
+  id,
+  button
+) {
 
   const value =
-    password.textContent;
+    document
+      .getElementById(id)
+      .textContent;
 
 
   try {
@@ -102,19 +170,31 @@ async function copyValue() {
   catch {
 
     const t =
-      document.createElement("textarea");
+      document
+        .createElement("textarea");
 
     t.value = value;
 
-    document.body.appendChild(t);
+    document
+      .body
+      .appendChild(t);
 
     t.select();
 
-    document.execCommand("copy");
+    document
+      .execCommand("copy");
 
     t.remove();
 
   }
+
+
+  const oldText =
+    button.textContent;
+
+
+  button.textContent =
+    "완료";
 
 
   statusEl.textContent =
@@ -123,7 +203,11 @@ async function copyValue() {
 
   setTimeout(() => {
 
-    statusEl.textContent = "";
+    button.textContent =
+      oldText;
+
+    statusEl.textContent =
+      "";
 
   }, 1300);
 
@@ -132,11 +216,22 @@ async function copyValue() {
 
 
 document
-  .querySelector(".copy-btn")
-  .addEventListener(
-    "click",
-    copyValue
-  );
+  .querySelectorAll(".copy-btn")
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        copyValue(
+          button.dataset.copyTarget,
+          button
+        );
+
+      }
+    );
+
+  });
 
 
 
